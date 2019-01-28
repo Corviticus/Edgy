@@ -6,9 +6,11 @@ This allows for lightweight apps that do not require the user to download and in
 
 ## Screenshots
 
-<img src="screenshots/edgy_03.png" height="400" alt="Screenshot"/>
-<img src="screenshots/edgy_50.png.png" height="400" alt="Screenshot"/>
-<img src="screenshots/edgy_95.png" height="400" alt="Screenshot"/> 
+<p float="left">
+  <img src="screenshots/edgy_03.png" width="300" />
+  <img src="screenshots/edgy_50.png" width="300" /> 
+  <img src="screenshots/edgy_95.png" width="300" />
+</p>
 
 ## Motivation
 
