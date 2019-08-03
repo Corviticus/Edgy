@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Edgy</string>
+
+    <string name="settings">Settings</string>
+    <string name="message_no_camera_permissions">Enable camera permissions here</string>
+
 </resources>

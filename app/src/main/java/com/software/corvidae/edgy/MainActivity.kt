@@ -1,8 +1,12 @@
 package com.software.corvidae.edgy
 
+import android.Manifest
 import android.app.Activity
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.Intent
+import android.content.pm.PackageManager
 import android.content.res.Configuration
-import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.ImageFormat
 import android.graphics.Matrix
@@ -11,7 +15,13 @@ import android.graphics.SurfaceTexture
 import android.hardware.Camera
 import android.hardware.Camera.CameraInfo
 import android.hardware.SensorManager
+import android.net.Uri
 import android.os.Bundle
+import android.provider.Settings
+import android.support.design.widget.Snackbar
+import android.support.v4.app.ActivityCompat
+import android.support.v4.app.DialogFragment
+import android.support.v4.content.ContextCompat
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
 import android.view.*
@@ -28,6 +38,8 @@ class MainActivity : AppCompatActivity(),
     companion object {
 
         private const val TAG = "MainActivity"
+
+        private const val PERMISSIONS_REQUEST_CAMERA = 1
 
         init {
             if (!OpenCVLoader.initDebug()) {
@@ -53,7 +65,6 @@ class MainActivity : AppCompatActivity(),
     private var mCamera: Camera? = null
     private var mPreviewSize: Camera.Size? = null
     private var mTextureView: AutoFitTextureView? = null
-    private var mTransformBitmap: Bitmap? = null
     private var mDeviceOrientationListener: OrientationEventListener? = null
 
     /**
@@ -111,12 +122,16 @@ class MainActivity : AppCompatActivity(),
     override fun onResume() {
         super.onResume()
 
-        if (!isCameraInUse) {// get the camera instance early in app lifecycle
-            try {
-                mCamera = Camera.open()
-            } catch (e: Exception) {
-                Log.e(TAG, "onCreate() - Camera could not be opened $e")
+        try {
+            if (!checkCameraPermissions()) { // API >= 6 hoop jumping...
+                return
+            } else {
+                if (mCamera == null) {
+                    mCamera = Camera.open()
+                }
             }
+        } catch (e: Exception) {
+            Log.e(TAG, "onCreate() - Camera could not be opened $e")
         }
     }
 
@@ -163,7 +178,7 @@ class MainActivity : AppCompatActivity(),
     }
 
     /**
-     * Called when the mTextureView becomes available
+     * Called when the [TextureView] becomes available
      *
      * @param surface - the TextureView
      * @param width - Width of mTextureView as an Integer
@@ -172,8 +187,16 @@ class MainActivity : AppCompatActivity(),
     override fun onSurfaceTextureAvailable(surface: SurfaceTexture, width: Int, height: Int) {
 
         // can't do anything without camera instance
-        if (mCamera == null) {
-            return
+        try {
+            if (!checkCameraPermissions()) { // API >= 6 hoop jumping...
+                return
+            } else {
+                if (mCamera == null) {
+                    mCamera = Camera.open()
+                }
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "onCreate() - Camera could not be opened $e")
         }
 
         // determine device AND sensor orientation - this may not work on all older phones...
@@ -186,18 +209,19 @@ class MainActivity : AppCompatActivity(),
         setUpCameraOutputs(width, height)
 
         // start 'er up!
-        try {
-            mCamera?.setPreviewTexture(surface)
-            mCamera?.setPreviewCallback(this)
-            mCamera?.startPreview()
+        if (mCamera != null) {
+            try {
+                mCamera?.setPreviewTexture(surface)
+                mCamera?.setPreviewCallback(this)
+                mCamera?.startPreview()
 
-        } catch (e: Exception) {
-            Log.e(TAG, "Exception starting camera preview: " + e.message)
+            } catch (e: Exception) {
+                Log.e(TAG, "Exception starting camera preview: " + e.message)
+            }
         }
     }
 
     override fun onSurfaceTextureSizeChanged(surface: SurfaceTexture, width: Int, height: Int) {
-
         // set up transform although we are not doing anything here...
         configureTransform(width, height)
     }
@@ -291,7 +315,6 @@ class MainActivity : AppCompatActivity(),
             // set up OpenCV variables
             mPreviewSizeWidth = mPreviewSize?.width ?: 0
             mPreviewSizeHeight = mPreviewSize?.height ?: 0
-            mTransformBitmap = Bitmap.createBitmap(mPreviewSizeWidth, mPreviewSizeHeight, Bitmap.Config.ARGB_8888)
 
             // fit the aspect ratio of TextureView to the size of preview
             val orientation = resources.configuration.orientation
@@ -361,20 +384,6 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-    // check if the camera is in use
-    private val isCameraInUse: Boolean
-        get() {
-            var camera: Camera? = null
-            try {
-                camera = Camera.open()
-            } catch (e: RuntimeException) {
-                return true
-            } finally {
-                camera?.release()
-            }
-            return false
-        }
-
     /**
      * Rotates a bitmap by a specified amount
      *
@@ -394,6 +403,7 @@ class MainActivity : AppCompatActivity(),
         // set 'processing flag' true
         mIsProcessing = true
 
+        // the c++ code will populate this
         val outputArray = IntArray(mPreviewSizeWidth * mPreviewSizeHeight)
 
         try {
@@ -401,11 +411,13 @@ class MainActivity : AppCompatActivity(),
                     mPreviewSizeWidth,
                     mPreviewSizeHeight,
                     mThresholdValue,
-                    data,     // IN - byte array from camera
+                    data,           // IN - byte array from camera
                     outputArray)    // OUT - char array from c++ code
         } catch (e: Exception) {
             e.printStackTrace()
         }
+
+        val mTransformBitmap = Bitmap.createBitmap(mPreviewSizeWidth, mPreviewSizeHeight, Bitmap.Config.ARGB_8888)
 
         // load bitmap into image view, add some transparency so we can see the camera's preview and
         // rotate. A nicer method would be to return the canny image (mImagePixels) without black background
@@ -416,4 +428,62 @@ class MainActivity : AppCompatActivity(),
         // done processing
         mIsProcessing = false
     }
+
+    /**
+     * Check device permissions to see if user has allowed use of camera hardware
+     * This will end up calling onRequestPermissionsResult() to handle permissions for API >= 6
+     *
+     * @return True or False depending on what the user decided to do
+     */
+    private fun checkCameraPermissions(): Boolean {
+
+        val granted = ContextCompat.checkSelfPermission(applicationContext, Manifest.permission.CAMERA)
+        return when {
+            granted != PackageManager.PERMISSION_GRANTED -> {
+                ActivityCompat.requestPermissions(this,
+                        arrayOf(Manifest.permission.CAMERA), PERMISSIONS_REQUEST_CAMERA)
+                false // cannot open camera at this time
+            }
+            else ->
+                true // we have permission to open the camera
+        }
+    }
+
+    /**
+     * Called when a user has selected 'Deny' or 'Allow' from a permissions dialog
+     *
+     * @param requestCode  Integer representing the 'Request Code'
+     * @param permissions  String array containing the requested permissions
+     * @param grantResults Integer array containing the permissions results
+     */
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        when (requestCode) {
+
+            PERMISSIONS_REQUEST_CAMERA -> {
+
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                    if (mCamera == null) {
+                        mCamera = Camera.open()
+                    }
+                } else if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.CAMERA)) {
+                   // ...
+                } else {
+                    val snackbar = Snackbar.make(mainLayout,
+                            resources.getString(R.string.message_no_camera_permissions), Snackbar.LENGTH_LONG)
+                    snackbar.setAction(resources.getString(R.string.settings)) {
+                        val intent = Intent()
+                        intent.action = Settings.ACTION_APPLICATION_DETAILS_SETTINGS
+                        val uri = Uri.fromParts("package", packageName, null)
+                        intent.data = uri
+                        startActivity(intent)
+                    }
+                    snackbar.show()
+                }
+            }
+        }
+    }
+
 }
