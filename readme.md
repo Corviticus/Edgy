@@ -3,7 +3,6 @@
 An introduction to using OpenCV in Android Studio without having the OpenCV Manager installed.
 This allows for lightweight apps that do not require the user to download and install yet another app.
 
-
 ## Screenshots
 
 <p float="left">
@@ -33,7 +32,56 @@ https://stackoverflow.com/questions/38958876/can-opencv-for-android-leverage-the
 
 ## Code Snippets
 
-OpenCV detection:
+Frame Ready from Camera:
+```
+// make sure we have the right image format for OpenCV processing
+override fun onPreviewFrame(data: ByteArray, camera: Camera) {
+    if (mCamera?.parameters?.previewFormat == ImageFormat.NV21) {
+        if (!mIsProcessing) {
+            imageProcessJob = GlobalScope.launch(Dispatchers.Main) { doImageProcessing(data) }
+        }
+    } else {
+        Log.e(TAG, "Wrong video format for OpenCV library")
+    }
+}
+```
+
+JNI call to OenCV:
+```
+ // runnable for performing the Canny Edge Detection
+private fun doImageProcessing(data: ByteArray) {
+
+// set 'processing flag' true
+mIsProcessing = true
+
+// the c++ code will populate this
+val outputArray = IntArray(mPreviewSizeWidth * mPreviewSizeHeight)
+
+try {
+    ImageProcessing(
+            mPreviewSizeWidth,
+            mPreviewSizeHeight,
+            mThresholdValue,
+            data,           // IN - byte array from camera
+            outputArray)    // OUT - char array from c++ code
+    } catch (e: Exception) {
+    e.printStackTrace()
+    }
+
+    val mTransformBitmap = Bitmap.createBitmap(mPreviewSizeWidth, mPreviewSizeHeight, Bitmap.Config.ARGB_8888)
+
+    // load bitmap into image view, add some transparency so we can see the camera's preview and
+    // rotate. A nicer method would be to return the canny image (mImagePixels) without black background
+    mTransformBitmap?.setPixels(outputArray, 0, mPreviewSizeWidth, 0, 0, mPreviewSizeWidth, mPreviewSizeHeight)
+    cameraPreviewImageView.alpha = .60f
+    cameraPreviewImageView.setImageBitmap(rotateBitmap(mTransformBitmap, 90f))
+
+    // done processing
+    mIsProcessing = false
+}
+```
+
+OpenCV Edge detection:
 ```
 #include <jni.h>
 #include <opencv2/core/core.hpp>
