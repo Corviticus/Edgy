@@ -1,7 +1,7 @@
 ## Overview
 
-An introduction to using OpenCV in Android Studio without having the OpenCV Manager installed.
-This allows for lightweight apps that do not require the user to download and install yet another app.
+Improved version of image_proc_ndk. Edge detection and Camera Image are refreshed at the same frame rate
+for better user experience.
 
 ## Screenshots
 
