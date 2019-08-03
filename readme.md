@@ -33,7 +33,7 @@ https://stackoverflow.com/questions/38958876/can-opencv-for-android-leverage-the
 ## Code Snippets
 
 Frame Ready from Camera:
-```
+```Kotlin
 // make sure we have the right image format for OpenCV processing
 override fun onPreviewFrame(data: ByteArray, camera: Camera) {
     if (mCamera?.parameters?.previewFormat == ImageFormat.NV21) {
@@ -47,7 +47,7 @@ override fun onPreviewFrame(data: ByteArray, camera: Camera) {
 ```
 
 JNI call to OenCV:
-```
+```Kotlin
  // runnable for performing the Canny Edge Detection
 private fun doImageProcessing(data: ByteArray) {
 
@@ -82,7 +82,7 @@ try {
 ```
 
 OpenCV Edge detection:
-```
+```C++
 #include <jni.h>
 #include <opencv2/core/core.hpp>
 #include <opencv2/imgproc/imgproc.hpp>
@@ -131,7 +131,7 @@ Java_com_software_corvidae_edgy_MainActivity_ImageProcessing (
 
 CMake file:
 
-```cmake
+```CMake
     cmake_minimum_required(VERSION 3.6)
     
     # OpenCV stuff
