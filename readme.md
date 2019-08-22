@@ -1,7 +1,7 @@
 ## Overview
 
 Improved version of image_proc_ndk. Edge detection and Camera Image are refreshed at the same frame rate
-for better user experience.
+for better user experience. Now uses NDK v20 and OpenCV v411.
 
 ## Screenshots
 
