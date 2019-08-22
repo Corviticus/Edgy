@@ -1,0 +1,18 @@
+Executable : /opt/android-sdk/cmake/3.6.4111459/bin/cmake
+arguments : 
+-H/media/bobcat/DATA/Software_Projects/Edgy/app/src/main/jni
+-B/media/bobcat/DATA/Software_Projects/Edgy/app/.cxx/cmake/release/armeabi-v7a
+-DANDROID_ABI=armeabi-v7a
+-DANDROID_PLATFORM=android-21
+-DCMAKE_LIBRARY_OUTPUT_DIRECTORY=/media/bobcat/DATA/Software_Projects/Edgy/app/build/intermediates/cmake/release/obj/armeabi-v7a
+-DCMAKE_BUILD_TYPE=Release
+-DANDROID_NDK=/opt/android-sdk/ndk/20.0.5594570
+-DCMAKE_C_FLAGS=-fexceptions -frtti
+-DCMAKE_CXX_FLAGS=-D__STDC_FORMAT_MACROS
+-DCMAKE_TOOLCHAIN_FILE=/opt/android-sdk/ndk/20.0.5594570/build/cmake/android.toolchain.cmake
+-DCMAKE_MAKE_PROGRAM=/opt/android-sdk/cmake/3.6.4111459/bin/ninja
+-GAndroid Gradle - Ninja
+-DANDROID_ARM_NEON=TRUE
+-DANDROID_STL=c++_shared
+jvmArgs : 
+

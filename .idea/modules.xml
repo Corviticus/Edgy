@@ -3,9 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Edgy.iml" filepath="$PROJECT_DIR$/Edgy.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OpenCV411/OpenCV411.iml" filepath="$PROJECT_DIR$/OpenCV411/OpenCV411.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/openCVLibrary320/openCVLibrary320.iml" filepath="$PROJECT_DIR$/openCVLibrary320/openCVLibrary320.iml" />
-      <module fileurl="file://$PROJECT_DIR$/openCVLibrary344/openCVLibrary344.iml" filepath="$PROJECT_DIR$/openCVLibrary344/openCVLibrary344.iml" />
     </modules>
   </component>
 </project>

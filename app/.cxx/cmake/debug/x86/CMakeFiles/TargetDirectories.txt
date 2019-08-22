@@ -1,0 +1,3 @@
+/media/bobcat/DATA/Software_Projects/Edgy/app/.cxx/cmake/debug/x86/CMakeFiles/edit_cache.dir
+/media/bobcat/DATA/Software_Projects/Edgy/app/.cxx/cmake/debug/x86/CMakeFiles/rebuild_cache.dir
+/media/bobcat/DATA/Software_Projects/Edgy/app/.cxx/cmake/debug/x86/CMakeFiles/ImageProcessing.dir

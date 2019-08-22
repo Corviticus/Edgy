@@ -1,0 +1,265 @@
+
+{
+	"buildFiles" : 
+	[
+		"/media/bobcat/DATA/Software_Projects/Edgy/app/src/main/jni/CMakeLists.txt"
+	],
+	"cleanCommands" : 
+	[
+		"/opt/android-sdk/cmake/3.6.4111459/bin/cmake --build /media/bobcat/DATA/Software_Projects/Edgy/app/.cxx/cmake/debug/armeabi-v7a --target clean"
+	],
+	"cppFileExtensions" : [ "cpp" ],
+	"libraries" : 
+	{
+		"IlmImf-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "IlmImf",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/3rdparty/libs/armeabi-v7a/libIlmImf.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"ImageProcessing-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "ImageProcessing",
+			"buildCommand" : "/opt/android-sdk/cmake/3.6.4111459/bin/cmake --build /media/bobcat/DATA/Software_Projects/Edgy/app/.cxx/cmake/debug/armeabi-v7a --target ImageProcessing",
+			"buildType" : "debug",
+			"files" : 
+			[
+				
+				{
+					"flags" : "  --target=armv7-none-linux-androideabi21 --gcc-toolchain=/opt/android-sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/linux-x86_64 --sysroot=/opt/android-sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/linux-x86_64/sysroot  -DImageProcessing_EXPORTS -I/media/bobcat/DATA/Software_Projects/Edgy/app/src/main/jni -I/opt/OpenCV-android-sdk/sdk/native/jni/include  -g -DANDROID -fdata-sections -ffunction-sections -funwind-tables -fstack-protector-strong -no-canonical-prefixes -fno-addrsig -march=armv7-a -mthumb -mfpu=neon -Wa,--noexecstack -Wformat -Werror=format-security  -D__STDC_FORMAT_MACROS -std=gnu++11 -O0 -fno-limit-debug-info  -fPIC    -c ",
+					"src" : "/media/bobcat/DATA/Software_Projects/Edgy/app/src/main/jni/ImageProcessing.cpp",
+					"workingDirectory" : "/media/bobcat/DATA/Software_Projects/Edgy/app/.cxx/cmake/debug/armeabi-v7a"
+				}
+			],
+			"output" : "/media/bobcat/DATA/Software_Projects/Edgy/app/build/intermediates/cmake/debug/obj/armeabi-v7a/libImageProcessing.so",
+			"toolchain" : "5486108758070521771"
+		},
+		"ittnotify-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "ittnotify",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/3rdparty/libs/armeabi-v7a/libittnotify.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"lib_opencv-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "lib_opencv",
+			"buildType" : "debug",
+			"output" : "/media/bobcat/DATA/Software_Projects/Edgy/app/src/main/jniLibs/armeabi-v7a/libopencv_java4.so",
+			"toolchain" : "5486108758070521771"
+		},
+		"libcpufeatures-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "libcpufeatures",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/3rdparty/libs/armeabi-v7a/libcpufeatures.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"libjasper-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "libjasper",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/3rdparty/libs/armeabi-v7a/liblibjasper.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"libjpeg-turbo-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "libjpeg-turbo",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/3rdparty/libs/armeabi-v7a/liblibjpeg-turbo.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"libpng-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "libpng",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/3rdparty/libs/armeabi-v7a/liblibpng.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"libprotobuf-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "libprotobuf",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/3rdparty/libs/armeabi-v7a/liblibprotobuf.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"libtiff-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "libtiff",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/3rdparty/libs/armeabi-v7a/liblibtiff.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"libwebp-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "libwebp",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/3rdparty/libs/armeabi-v7a/liblibwebp.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"opencv_calib3d-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "opencv_calib3d",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/staticlibs/armeabi-v7a/libopencv_calib3d.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"opencv_core-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "opencv_core",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/staticlibs/armeabi-v7a/libopencv_core.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"opencv_dnn-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "opencv_dnn",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/staticlibs/armeabi-v7a/libopencv_dnn.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"opencv_features2d-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "opencv_features2d",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/staticlibs/armeabi-v7a/libopencv_features2d.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"opencv_flann-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "opencv_flann",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/staticlibs/armeabi-v7a/libopencv_flann.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"opencv_highgui-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "opencv_highgui",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/staticlibs/armeabi-v7a/libopencv_highgui.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"opencv_imgcodecs-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "opencv_imgcodecs",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/staticlibs/armeabi-v7a/libopencv_imgcodecs.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"opencv_imgproc-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "opencv_imgproc",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/staticlibs/armeabi-v7a/libopencv_imgproc.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"opencv_java-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "opencv_java",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/libs/armeabi-v7a/libopencv_java4.so",
+			"toolchain" : "5486108758070521771"
+		},
+		"opencv_ml-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "opencv_ml",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/staticlibs/armeabi-v7a/libopencv_ml.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"opencv_objdetect-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "opencv_objdetect",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/staticlibs/armeabi-v7a/libopencv_objdetect.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"opencv_photo-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "opencv_photo",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/staticlibs/armeabi-v7a/libopencv_photo.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"opencv_stitching-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "opencv_stitching",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/staticlibs/armeabi-v7a/libopencv_stitching.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"opencv_video-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "opencv_video",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/staticlibs/armeabi-v7a/libopencv_video.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"opencv_videoio-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "opencv_videoio",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/staticlibs/armeabi-v7a/libopencv_videoio.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"quirc-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "quirc",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/3rdparty/libs/armeabi-v7a/libquirc.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"tbb-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "tbb",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/3rdparty/libs/armeabi-v7a/libtbb.a",
+			"toolchain" : "5486108758070521771"
+		},
+		"tegra_hal-Debug-armeabi-v7a" : 
+		{
+			"abi" : "armeabi-v7a",
+			"artifactName" : "tegra_hal",
+			"buildType" : "debug",
+			"output" : "/opt/OpenCV-android-sdk/sdk/native/3rdparty/libs/armeabi-v7a/libtegra_hal.a",
+			"toolchain" : "5486108758070521771"
+		}
+	},
+	"toolchains" : 
+	{
+		"5486108758070521771" : 
+		{
+			"cCompilerExecutable" : "/opt/android-sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/linux-x86_64/bin/clang",
+			"cppCompilerExecutable" : "/opt/android-sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++"
+		}
+	}
+}

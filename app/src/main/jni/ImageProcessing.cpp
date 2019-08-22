@@ -35,7 +35,7 @@ Java_com_software_corvidae_edgy_MainActivity_ImageProcessing (
     /// create new cv::Mat, canny it and convert
     Mat cannyMat(height, width, CV_8UC1);
     Canny(blurred, cannyMat, lowThreshold, lowThreshold * ratio, 3);
-    cvtColor(cannyMat, finalImage, CV_GRAY2BGRA);
+    cvtColor(cannyMat, finalImage, COLOR_GRAY2BGRA);
 
     /// cleanup
     env->ReleaseByteArrayElements(NV21FrameData, pNV21FrameData, 0);

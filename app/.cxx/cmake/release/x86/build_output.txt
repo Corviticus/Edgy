@@ -1,0 +1,17 @@
+-- Check for working C compiler: /opt/android-sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/linux-x86_64/bin/clang
+-- Check for working C compiler: /opt/android-sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/linux-x86_64/bin/clang -- works
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Check for working CXX compiler: /opt/android-sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++
+-- Check for working CXX compiler: /opt/android-sdk/ndk/20.0.5594570/toolchains/llvm/prebuilt/linux-x86_64/bin/clang++ -- works
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Found OpenCV: /opt/OpenCV-android-sdk (found version "3.4.4") found components:  java 
+-- $$$ opencv found: opencv_java
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /media/bobcat/DATA/Software_Projects/Edgy/app/.cxx/cmake/release/x86
