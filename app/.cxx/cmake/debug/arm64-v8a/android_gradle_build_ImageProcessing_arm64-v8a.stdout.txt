@@ -1,2 +1,0 @@
-[1/2] Building CXX object CMakeFiles/ImageProcessing.dir/ImageProcessing.cpp.o
-[2/2] Linking CXX shared library /media/bobcat/DATA/Software_Projects/Edgy/app/build/intermediates/cmake/debug/obj/arm64-v8a/libImageProcessing.so

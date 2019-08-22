@@ -43,8 +43,8 @@ class AutoFitTextureView
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec)
 
-        val width = View.MeasureSpec.getSize(widthMeasureSpec)
-        val height = View.MeasureSpec.getSize(heightMeasureSpec)
+        val width = MeasureSpec.getSize(widthMeasureSpec)
+        val height = MeasureSpec.getSize(heightMeasureSpec)
 
         if (mRatioWidth == 0 || mRatioHeight == 0) {
             setMeasuredDimension(width, height)

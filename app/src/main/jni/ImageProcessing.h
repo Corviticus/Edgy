@@ -7,7 +7,7 @@
 
 extern "C" bool Java_com_software_corvidae_edgy_MainActivity_ImageProcessing (
         JNIEnv* env,
-        const jobject thiz,
+        const jobject thisObject,
         const jint width,
         const jint height,
         const int lowThreshold,
